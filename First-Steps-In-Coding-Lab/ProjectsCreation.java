@@ -4,6 +4,9 @@
         // 2. Брой на проектите, които трябва да изготви - цяло число в интервала [0 … 100]
     // Изход На конзолата се отпечатва:
         // "The architect {името на архитекта} will need {необходими часове} hours to complete {брой на проектите} project/s."
+    // Примерен вход и изход
+        // George 4 -> The architect George will need 12 hours to complete 4 project/s. 
+        // Sanya 9 -> The architect Sanya will need 27 hours to complete 9 project/s.
 
 package SoftUni;
 

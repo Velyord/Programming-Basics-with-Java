@@ -26,9 +26,9 @@
         Цена на баскетболен екип: 330 – 20% = 264
         Цена на баскетболна топка: 1 / 4 от 264 = 66
         Цена на баскетболни аксесоари: 1 /  5 от 66 = 13.20
-        Обща цена за екипировката: 550 + 330 + 264 + 66 + 13.20= 711.68
+        Обща цена за екипировката: 550 + 330 + 264 + 66 + 13.20 = 711.68
 */
-package Exe4;
+package SoftUni.Exer4;
 
 import java.util.Scanner;
 
@@ -36,14 +36,36 @@ import static java.lang.System.in;
 import static java.lang.System.out;
 
 public class BasketballEquipment {
+    static Scanner scanner = new Scanner(in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int yearlyTax = Integer.parseInt(scanner.nextLine());
+        out.println("Въведете годишна такса за тренировки по баскетбол:");
+        int yearlyTax = setTax();
+
         double kecove = yearlyTax * 0.6;
         double ekip = kecove * 0.8;
         double topka = ekip * 0.25;
         double aksesors = topka * 0.2;
 
-        out.printf("%.2f", yearlyTax + kecove + ekip + topka + aksesors);
+        double sumAll = sumAll(yearlyTax, kecove, ekip, topka, aksesors);
+        out.printf("%.2f", sumAll);
+    }
+    private static double sumAll(int y, double k, double e, double t, double a) {
+        return y + k + e + t + a;
+    }
+    private static int setTax() {
+        int tax;
+
+        try {
+            tax = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setTax();
+        }
+        if (tax < 0 || tax > 9999) {
+            out.println("Моля въведе число между 0 и 9999!");
+            return setTax();
+        } else
+            return tax;
     }
 }

@@ -22,18 +22,19 @@ import static java.lang.System.out;
 import java.util.Scanner;
 
 public class PetShop {
+    static Scanner scanner = new Scanner(System.in);
+    
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         out.println("Броят на опаковките храна за кучета: ");
-        int numOfDogFoodPacks = Integer.parseInt(scanner.nextLine());
+        int numOfDogFoodPacks = setNumOfFoodPacks(); // Проверява дали са в диапазон [0 ... 100]
         out.println("Броят на опаковките храна за котки: ");
-        int numOfCatFoodPacks = Integer.parseInt(scanner.nextLine());
+        int numOfCatFoodPacks = setNumOfFoodPacks();
 
         double priceOfDogFoodPack = 2.50;
         double priceOfCatFoodPack = 4.00;
 
-        double sumPrice = 
+        double sumPrice =
                 priceCalculator(numOfDogFoodPacks, priceOfDogFoodPack)
                 + priceCalculator(numOfCatFoodPacks, priceOfCatFoodPack);
 
@@ -42,5 +43,22 @@ public class PetShop {
 
     private static double priceCalculator(int numPacks, double pricePack) {
         return numPacks * pricePack;
+    }
+    private static int setNumOfFoodPacks() {
+        int numOfFoodPacks;
+
+        try {
+            numOfFoodPacks = Integer.parseInt(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setNumOfFoodPacks();
+        }
+
+        if (numOfFoodPacks < 0 || numOfFoodPacks > 100) {
+            out.println("Моля въведе число между 0 и 100!");
+            return setNumOfFoodPacks();
+        } else
+            return numOfFoodPacks;
     }
 }

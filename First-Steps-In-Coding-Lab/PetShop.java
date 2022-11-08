@@ -24,16 +24,23 @@ import java.util.Scanner;
 public class PetShop {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+
         out.println("Броят на опаковките храна за кучета: ");
         int numOfDogFoodPacks = Integer.parseInt(scanner.nextLine());
         out.println("Броят на опаковките храна за котки: ");
         int numOfCatFoodPacks = Integer.parseInt(scanner.nextLine());
-        
-        double priceOfDogFoodPacks = numOfDogFoodPacks * 2.50;
-        double priceOfCatFoodPacks = numOfCatFoodPacks * 4.00;
-        double sumOfFoodPacks = priceOfDogFoodPacks + priceOfCatFoodPacks;
 
-        out.printf("%.2f lv.", sumOfFoodPacks);
+        double priceOfDogFoodPack = 2.50;
+        double priceOfCatFoodPack = 4.00;
+
+        double sumPrice = 
+                priceCalculator(numOfDogFoodPacks, priceOfDogFoodPack)
+                + priceCalculator(numOfCatFoodPacks, priceOfCatFoodPack);
+
+        out.printf("%.2f lv.", sumPrice);
+    }
+
+    private static double priceCalculator(int numPacks, double pricePack) {
+        return numPacks * pricePack;
     }
 }

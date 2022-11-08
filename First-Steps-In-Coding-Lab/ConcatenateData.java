@@ -1,6 +1,9 @@
-// Напишете програма, която прочита от конзолата име, фамилия, възраст и град и печата следното съобщение: "You are <firstName> <lastName>, a <age>-years old person from <town>."
-
-package SoftUni;
+/*
+Условие:
+    Напишете програма, която прочита от конзолата име, фамилия, възраст и град и печата следното съобщение: 
+    "You are <firstName> <lastName>, a <age>-years old person from <town>."
+*/
+package SoftUni.Lab3;
 
 import static java.lang.System.out;
 import java.util.Scanner;
@@ -12,7 +15,8 @@ public class ConcatenateData {
         String lastName = scanner.nextLine();
         int age = Integer.parseInt(scanner.nextLine());
         String town = scanner.nextLine();
-        String text = "You are %s %s, a %d-years old person from %s.";
-        out.printf(text, firstName, lastName, age, town);
+
+        String output = "You are %s %s, a %d-years old person from %s.";
+        out.printf(output, firstName, lastName, age, town);
     }
 }

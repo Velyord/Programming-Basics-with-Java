@@ -1,12 +1,12 @@
 /*
 Условие:
-    Ресторант отваря врати и предлага няколко менюта на преференциални цени: 
-    • Пилешко меню –  10.35 лв. 
-    • Меню с риба – 12.40 лв. 
-    • Вегетарианско меню  – 8.15 лв. 
+    Ресторант отваря врати и предлага няколко менюта на преференциални цени:
+    • Пилешко меню –  10.35 лв.
+    • Меню с риба – 12.40 лв.
+    • Вегетарианско меню  – 8.15 лв.
     Напишете програма, която изчислява колко ще струва на група хора да си поръчат храна за вкъщи.
-    Групата ще си поръча и десерт, чиято цена е равна на 20% от общата сметка (без доставката). 
-    Цената на доставка е 2.50 лв и се начислява най-накрая.  
+    Групата ще си поръча и десерт, чиято цена е равна на 20% от общата сметка (без доставката).
+    Цената на доставка е 2.50 лв и се начислява най-накрая.
 Вход:
     От конзолата се четат 3 реда:
     • Брой пилешки менюта – цяло число в интервала [0 … 99]
@@ -38,26 +38,50 @@
         Цена на доставка: 2.50 (по условие)
         Обща цена на поръчката: 166.85 + 33.37 + 2.50 = 202.72
 */
-package Exe4;
+package SoftUni.Exer4;
 
 import java.util.Scanner;
-import static java.lang.System.out;
+
+import static java.lang.System.*;
 
 public class FoodDelivery {
+    static Scanner scanner = new Scanner(in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int chickenMenus = Integer.parseInt(scanner.nextLine());
-        int fishMenus = Integer.parseInt(scanner.nextLine());
-        int veganMenus = Integer.parseInt(scanner.nextLine());
+        int chickenMenus = setIntValue(0, 99, "пилешки");
+        int fishMenus = setIntValue(0, 99, "рибни");
+        int veganMenus = setIntValue(0, 99, "вегетариански");
 
-        double priceChicken = chickenMenus * 10.35;
-        double priceFish = fishMenus * 12.40;
-        double priceVegan = veganMenus * 8.15;
+        double priceForChicken = 10.35;
+        double priceForFish = 12.40;
+        double priceForVegan = 8.15;
+        double priceDelivery = 2.50;
 
-        double sumMenus = priceChicken + priceFish + priceVegan;
+        double priceOfChickenMenus = chickenMenus * priceForChicken;
+        double priceOfFishMenus = fishMenus * priceForFish;
+        double priceOfVeganMenus = veganMenus * priceForVegan;
+
+        double sumMenus = priceOfChickenMenus + priceOfFishMenus + priceOfVeganMenus;
         double desert = sumMenus * 0.20;
-        double sumAll = sumMenus + desert + 2.50;
+        double sumAll = sumMenus + desert + priceDelivery;
 
         out.printf("%.2f", sumAll);
+    }
+    private static int setIntValue(int min, int max, String menu) {
+        int value;
+        out.println("Въведи брой "+menu+" менюта:");
+        try {
+            value = Integer.parseInt(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue(min, max, menu);
+        }
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setIntValue(min, max, menu);
+        }
+        else
+            return value;
     }
 }

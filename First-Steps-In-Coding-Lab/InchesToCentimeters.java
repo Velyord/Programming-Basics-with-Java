@@ -19,7 +19,6 @@ public class InchesToCentimeters {
         out.println(centimeters);
     }
     private static double inchesToCentimeters(double inches) {
-        double centimeters = inches * 2.54;
-        return centimeters;
+        return inches * 2.54;
     }
 }

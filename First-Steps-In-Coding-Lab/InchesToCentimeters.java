@@ -11,6 +11,7 @@ public class InchesToCentimeters {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
+        out.println("Inches: ");
         double input = Double.parseDouble(scanner.nextLine());
         
         out.println(input*2.54);

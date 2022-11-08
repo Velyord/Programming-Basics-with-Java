@@ -35,65 +35,48 @@ public class DepositCalculator {
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        double depSum = setDepSum();
-        int srok = setSrok();
-        double godLihPro = setGodLihPro();
+        double depSum = setDoubleValue(100, 10000);
+        int srok = setIntValue(1, 12);
+        double godLihPro = setDoubleValue(0, 100);
 
         double output = calculate(depSum, srok, godLihPro);
         out.println(output);
     }
-    private static double calculate(double depSum, int srok, double godLihPro) {
+    private static double calculate(double depSum, double srok, double godLihPro) {
         return depSum + depSum * (godLihPro / 100) / 12 * srok;
     }
-    private static double setDepSum() {
-        double depSum;
+    private static double setDoubleValue(double min, double max) {
+        double value;
 
         try {
-            depSum = Double.parseDouble(scanner.nextLine());
+            value = Double.parseDouble(scanner.nextLine());
         }
         catch (Exception e){
             out.println("Не сте въвели число. Пробвайте пак!");
-            return setDepSum();
+            return setDoubleValue(min, max);
         }
-        if (depSum < 100 || depSum > 10000) {
-            out.println("Моля въведе число между 100 и 10000!");
-            return setDepSum();
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setDoubleValue(min, max);
         }
         else
-            return depSum;
+            return value;
     }
-    private static int setSrok() {
-        int srok;
+    private static int setIntValue(int min, int max) {
+        int value;
 
         try {
-            srok = Integer.parseInt(scanner.nextLine());
+            value = Integer.parseInt(scanner.nextLine());
         }
         catch (Exception e){
             out.println("Не сте въвели число. Пробвайте пак!");
-            return setSrok();
+            return setIntValue(min, max);
         }
-        if (srok < 1 || srok > 12) {
-            out.println("Моля въведе число между 1 и 12!");
-            return setSrok();
-        }
-        else
-            return srok;
-    }
-    private static double setGodLihPro() {
-        double godLihPro;
-
-        try {
-            godLihPro = Double.parseDouble(scanner.nextLine());
-        }
-        catch (Exception e){
-            out.println("Не сте въвели число. Пробвайте пак!");
-            return setGodLihPro();
-        }
-        if (godLihPro < 0 || godLihPro > 100) {
-            out.println("Моля въведе число между 0 и 100!");
-            return setGodLihPro();
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setIntValue(min, max);
         }
         else
-            return godLihPro;
+            return value;
     }
 }

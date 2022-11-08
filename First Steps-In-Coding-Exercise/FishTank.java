@@ -1,7 +1,7 @@
 /*
 Условие:
-    За рождения си ден Любомир получил аквариум с формата на паралелепипед. Първоначално прочитаме от конзолата на отделни редове размерите му – дължина, широчина и височина в сантиметри. Трябва да се пресметне колко литра вода ще събира аквариума, ако се знае, че определен процент от вместимостта му е заета от пясък, растения, нагревател и помпа. 
-    Един литър вода се равнява на един кубичен дециметър/ 1л=1 дм3/. 
+    За рождения си ден Любомир получил аквариум с формата на паралелепипед. Първоначално прочитаме от конзолата на отделни редове размерите му – дължина, широчина и височина в сантиметри. Трябва да се пресметне колко литра вода ще събира аквариума, ако се знае, че определен процент от вместимостта му е заета от пясък, растения, нагревател и помпа.
+    Един литър вода се равнява на един кубичен дециметър/ 1л=1 дм3/.
     Да се напише програма, която изчислява литрите вода, която са необходими за напълването на аквариума.
 Вход:
     От конзолата се четат 4 реда:
@@ -32,24 +32,65 @@
         заето пространство: 18.5% = 0.185
         нужни литри: 719.565 * (1 - 0.185) = 586.445475 литра
 */
-package Exe4;
+package SoftUni.Exer4;
 
 import java.util.Scanner;
+import static java.lang.System.in;
 import static java.lang.System.out;
 
 public class FishTank {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int duljina = Integer.parseInt(scanner.nextLine());
-        int shirina = Integer.parseInt(scanner.nextLine());
-        int visochina = Integer.parseInt(scanner.nextLine());
-        double procent = Double.parseDouble(scanner.nextLine());
+    static Scanner scanner = new Scanner(in);
 
+    public static void main(String[] args) {
+        int duljina = setIntValue(10, 500);
+        int shirina = setIntValue(10, 300);
+        int visochina = setIntValue(10, 200);
+        double procent = setDoubleValue(0, 100);
+
+        double output = calculateNujniLitri(duljina, shirina, visochina, procent);
+        out.println(output);
+    }
+    private static double calculateNujniLitri(int duljina, int shirina, int visochina, double procent) {
         int obem = duljina * shirina * visochina;
         double litri = obem * 0.001;
-        double procentAsDecimal = procent / 100.0;
-        double nujniLitri = litri * (1-procentAsDecimal);
+        double procentVoda = 1 - procent / 100.00;
+        return litri * procentVoda;
+    }
+    private static int calculateObem(int d, int s, int v) {
+        return d * s * v;
+    }
+    private static int setIntValue(int min, int max) {
+        int value;
 
-        out.println(nujniLitri);
+        try {
+            value = Integer.parseInt(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue(min, max);
+        }
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setIntValue(min, max);
+        }
+        else
+            return value;
+    }
+    private static double setDoubleValue(double min, double max) {
+        double value;
+
+        try {
+            value = Double.parseDouble(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setDoubleValue(min, max);
+        }
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setDoubleValue(min, max);
+        }
+        else
+            return value;
     }
 }

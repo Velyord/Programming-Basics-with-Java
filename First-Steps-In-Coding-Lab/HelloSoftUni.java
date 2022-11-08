@@ -1,7 +1,8 @@
-// Конзолна програма "Hello SoftUni"
-// Напишете конзолна Java програма, която отпечатва текста "Hello SoftUni".
-
-package SoftUni;
+/*
+Условие:
+    Напишете конзолна Java програма, която отпечатва текста "Hello SoftUni".
+*/
+package SoftUni.Lab3;
 
 import static java.lang.System.out;
 

@@ -49,12 +49,10 @@ public class PetShop {
 
         try {
             numOfFoodPacks = Integer.parseInt(scanner.nextLine());
-        }
-        catch (Exception e){
+        } catch (Exception e){
             out.println("Не сте въвели число. Пробвайте пак!");
             return setNumOfFoodPacks();
         }
-
         if (numOfFoodPacks < 0 || numOfFoodPacks > 100) {
             out.println("Моля въведе число между 0 и 100!");
             return setNumOfFoodPacks();

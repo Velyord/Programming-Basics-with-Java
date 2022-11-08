@@ -27,12 +27,11 @@ public class PetShop {
         
         out.println("Броят на опаковките храна за кучета: ");
         int numOfDogFoodPacks = Integer.parseInt(scanner.nextLine());
-        double priceOfDogFoodPacks = numOfDogFoodPacks * 2.50;
-
         out.println("Броят на опаковките храна за котки: ");
         int numOfCatFoodPacks = Integer.parseInt(scanner.nextLine());
+        
+        double priceOfDogFoodPacks = numOfDogFoodPacks * 2.50;
         double priceOfCatFoodPacks = numOfCatFoodPacks * 4.00;
-
         double sumOfFoodPacks = priceOfDogFoodPacks + priceOfCatFoodPacks;
 
         out.printf("%.2f lv.", sumOfFoodPacks);

@@ -10,10 +10,16 @@ import java.util.Scanner;
 public class InchesToCentimeters {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+
         out.println("Inches: ");
-        double input = Double.parseDouble(scanner.nextLine());
-        
-        out.println(input*2.54);
+        double inches = Double.parseDouble(scanner.nextLine());
+
+        double centimeters = inchesToCentimeters(inches);
+
+        out.println(centimeters);
+    }
+    private static double inchesToCentimeters(double inches) {
+        double centimeters = inches * 2.54;
+        return centimeters;
     }
 }

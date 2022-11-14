@@ -24,9 +24,9 @@
 */
 package SoftUni.Exer4;
 
-import java.util.Scanner;
-import static java.lang.System.in;
 import static java.lang.System.out;
+import static java.lang.System.in;
+import java.util.Scanner;
 
 public class VacationBooksList {
     static Scanner scanner = new Scanner(in);
@@ -45,24 +45,23 @@ public class VacationBooksList {
         return numOfPages / pagesInHour / numOfDays;
     }
 
-    private static int setIntValue(int min, int max, String quantity) {
+    private static int setIntValue(int min, int max, String output) {
         int value;
-        out.println("Въведи " + quantity + ":");
+        out.println("Въведи " + output + ":");
 
         try {
             value = Integer.parseInt(scanner.nextLine());
         }
         catch (Exception e){
             out.println("Не сте въвели число. Пробвайте пак!");
-            return setIntValue(min, max, quantity);
+            return setIntValue(min, max, output);
         }
         
         return value;
-
         /*
         if (value < min || value > max) {
             out.printf("Моля въведе число между %d и %d!", min, max);
-            return setIntValue(min, max, quantity);
+            return setIntValue(min, max, output);
         }
         else
             return value;

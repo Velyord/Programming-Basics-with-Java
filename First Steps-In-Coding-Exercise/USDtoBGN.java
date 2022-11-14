@@ -11,30 +11,29 @@
 */
 package SoftUni.Exer4;
 
-import java.util.Scanner;
-import static java.lang.System.in;
 import static java.lang.System.out;
+import static java.lang.System.in;
+import java.util.Scanner;
 
 public class USDtoBGN {
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        double kurs = 1.79549;
-
-        out.println("Въведи сума български пари: ");
         double bgn = setDoubleValue();
 
-        double bgnToUsd = convertBGNtoUSD(bgn, kurs);
+        double bgnToUsd = convertBGNtoUSD(bgn);
         out.println(bgnToUsd);
     }
 
-    private static double convertBGNtoUSD(double bgn, double kurs) {
+    private static double convertBGNtoUSD(double bgn) {
+        double kurs = 1.79549;
         return bgn * kurs;
     }
 
     private static double setDoubleValue() {
         double value;
-
+        out.println("Въведи сума български пари: ");
+        
         try {
             value = Double.parseDouble(scanner.nextLine());
         }
@@ -42,6 +41,7 @@ public class USDtoBGN {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setDoubleValue();
         }
+        
         if (value < 0) {
             out.println("Моля въведе положително число");
             return setDoubleValue();

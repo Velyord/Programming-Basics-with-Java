@@ -19,44 +19,48 @@
 package SoftUni.Lab3;
 
 import static java.lang.System.out;
+import static java.lang.System.in;
 import java.util.Scanner;
 
 public class PetShop {
-    static Scanner scanner = new Scanner(System.in);
-    
+    static Scanner scanner = new Scanner(in);
+
     public static void main(String[] args) {
+        int numOfDogFoodPacks = setIntValue(0, 100, "кучета");
+        int numOfCatFoodPacks = setIntValue(0, 100, "котки");
+        
+        double price = calculatePrice(numOfDogFoodPacks, numOfCatFoodPacks);
 
-        out.println("Броят на опаковките храна за кучета: ");
-        int numOfDogFoodPacks = setNumOfFoodPacks(); // Проверява дали са в диапазон [0 ... 100]
-        out.println("Броят на опаковките храна за котки: ");
-        int numOfCatFoodPacks = setNumOfFoodPacks();
+        out.printf("%.2f lv.", price);
+    }
 
+    private static double calculatePrice(int numOfDogFoodPacks, int numOfCatFoodPacks) {
         double priceOfDogFoodPack = 2.50;
         double priceOfCatFoodPack = 4.00;
-
-        double sumPrice =
-                priceCalculator(numOfDogFoodPacks, priceOfDogFoodPack)
-                + priceCalculator(numOfCatFoodPacks, priceOfCatFoodPack);
-
-        out.printf("%.2f lv.", sumPrice);
+        
+        double priceForDogFoodPacks = numOfDogFoodPacks * priceOfDogFoodPack;
+        double priceForCatFoodPacks = numOfCatFoodPacks * priceOfCatFoodPack;
+        
+        return priceForDogFoodPacks + priceForCatFoodPacks;
     }
-
-    private static double priceCalculator(int numPacks, double pricePack) {
-        return numPacks * pricePack;
-    }
-    private static int setNumOfFoodPacks() {
-        int numOfFoodPacks;
+    
+    private static int setIntValue(int min, int max, String object) {
+        int value;
+        out.println("Въведете броят на опаковките храна за " + object + ":");
 
         try {
-            numOfFoodPacks = Integer.parseInt(scanner.nextLine());
-        } catch (Exception e){
-            out.println("Не сте въвели число. Пробвайте пак!");
-            return setNumOfFoodPacks();
+            value = Integer.parseInt(scanner.nextLine());
         }
-        if (numOfFoodPacks < 0 || numOfFoodPacks > 100) {
-            out.println("Моля въведе число между 0 и 100!");
-            return setNumOfFoodPacks();
-        } else
-            return numOfFoodPacks;
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue(min, max, object);
+        }
+
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setIntValue(min, max, object);
+        }
+        else
+            return value;
     }
 }

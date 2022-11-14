@@ -30,11 +30,12 @@
 */
 package SoftUni.Exer4;
 
-import java.util.Scanner;
 import static java.lang.System.out;
+import static java.lang.System.in;
+import java.util.Scanner;
 
 public class SuppliesForSchool {
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
         int numOfPenPacks = setIntValue(0, 100, "брой пакети химикали");
@@ -46,7 +47,7 @@ public class SuppliesForSchool {
 
         out.println(price);
     }
-    
+
     private static double calculateSum(int numOfPenPacks, int numOfMarkerPacks, int litersOfCleaningDeturgent, int discountPercentage) {
         double priceOfPenPacks = 5.80;
         double priceOfMarkerPacks = 7.20;
@@ -60,22 +61,22 @@ public class SuppliesForSchool {
 
         return price - (price * discountPercentage / 100);
     }
-    
-    private static int setIntValue(int min, int max, String quantity) {
+
+    private static int setIntValue(int min, int max, String output) {
         int value;
-        out.println("Въведи " + quantity + ":");
+        out.println("Въведи " + output + ":");
 
         try {
             value = Integer.parseInt(scanner.nextLine());
         }
         catch (Exception e){
             out.println("Не сте въвели число. Пробвайте пак!");
-            return setIntValue(min, max, quantity);
+            return setIntValue(min, max, output);
         }
 
         if (value < min || value > max) {
             out.printf("Моля въведе число между %d и %d!", min, max);
-            return setIntValue(min, max, quantity);
+            return setIntValue(min, max, output);
         }
         else
             return value;

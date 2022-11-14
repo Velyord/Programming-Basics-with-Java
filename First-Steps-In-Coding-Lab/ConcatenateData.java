@@ -5,19 +5,58 @@
 */
 package SoftUni.Lab3;
 
-import static java.lang.System.out;
 import java.util.Scanner;
+import static java.lang.System.out;
+import static java.lang.System.in;
 
 public class ConcatenateData {
+    static Scanner scanner = new Scanner(in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        String firstName = scanner.nextLine();
-        String lastName = scanner.nextLine();
-        int age = Integer.parseInt(scanner.nextLine());
-        String town = scanner.nextLine();
+        String firstName = setStringValue();
+        String lastName = setStringValue();
+        int age = setIntValue();
+        String town = setStringValue();
 
         String output = "You are %s %s, a %d-years old person from %s.";
         out.printf(output, firstName, lastName, age, town);
+    }
+
+    private static int setIntValue() {
+        int value;
+
+        try {
+            value = Integer.parseInt(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue();
+        }
+
+        if (value < 0) {
+            out.println("Моля въведете положително число!");
+            return setIntValue();
+        }
+        else
+            return value;
+    }
+
+    private static String setStringValue() {
+        String value;
+        value = scanner.nextLine();
+        boolean isSpecChar = false;
+        String specialCharacters="!#$%&'()*+,./:;<=>?@[]^_`{|}0123456789";
+
+        for (int i = 0; i < value.length(); i++)
+            if (specialCharacters.contains(Character.toString(value.charAt(i)))) {
+                isSpecChar = true;
+            }
+        
+        if(isSpecChar) {
+            out.println("Моля въведете правилно име!");
+            return setStringValue();
+        }
+        else
+            return value;
     }
 }

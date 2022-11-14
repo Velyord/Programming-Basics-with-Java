@@ -30,42 +30,44 @@
 */
 package SoftUni.Exer4;
 
-import java.util.Scanner;
-
-import static java.lang.System.in;
 import static java.lang.System.out;
+import static java.lang.System.in;
+import java.util.Scanner;
 
 public class BasketballEquipment {
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        out.println("Въведете годишна такса за тренировки по баскетбол:");
-        int yearlyTax = setTax();
-
+        int yearlyTax = setIntValue(0, 9999);
+        
+        double price = calculatePrice(yearlyTax);
+        
+        out.printf("%.2f", price);
+    }
+    private static double calculatePrice(int yearlyTax) {
         double kecove = yearlyTax * 0.6;
         double ekip = kecove * 0.8;
         double topka = ekip * 0.25;
         double aksesors = topka * 0.2;
-
-        double sumAll = sumAll(yearlyTax, kecove, ekip, topka, aksesors);
-        out.printf("%.2f", sumAll);
+        
+        return yearlyTax + kecove + ekip + topka + aksesors;
     }
-    private static double sumAll(int y, double k, double e, double t, double a) {
-        return y + k + e + t + a;
-    }
-    private static int setTax() {
-        int tax;
-
+    private static int setIntValue(int min, int max) {
+        int value;
+        out.println("Въведете годишна такса за тренировки по баскетбол:");
+        
         try {
-            tax = Integer.parseInt(scanner.nextLine());
-        } catch (Exception e){
-            out.println("Не сте въвели число. Пробвайте пак!");
-            return setTax();
+            value = Integer.parseInt(scanner.nextLine());
         }
-        if (tax < 0 || tax > 9999) {
-            out.println("Моля въведе число между 0 и 9999!");
-            return setTax();
-        } else
-            return tax;
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue(min, max);
+        }
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setIntValue(min, max);
+        }
+        else
+            return value;
     }
 }

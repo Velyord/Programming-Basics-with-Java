@@ -5,20 +5,40 @@
 package SoftUni.Lab3;
 
 import static java.lang.System.out;
+import static java.lang.System.in;
 import java.util.Scanner;
 
 public class InchesToCentimeters {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(in);
 
-        out.println("Inches: ");
-        double inches = Double.parseDouble(scanner.nextLine());
+    public static void main(String[] args) {
+        double inches = setDoubleValue();
 
         double centimeters = inchesToCentimeters(inches);
 
         out.println(centimeters);
     }
+    
     private static double inchesToCentimeters(double inches) {
         return inches * 2.54;
+    }
+
+    private static double setDoubleValue() {
+        double value;
+        out.println("Inches: ");
+
+        try {
+            value = Double.parseDouble(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setDoubleValue();
+        }
+        if (value < 0) {
+            out.println("Моля въведе положително число");
+            return setDoubleValue();
+        }
+        else
+            return value;
     }
 }

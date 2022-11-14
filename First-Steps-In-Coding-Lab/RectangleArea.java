@@ -5,32 +5,36 @@
 package SoftUni.Lab3;
 
 import static java.lang.System.out;
+import static java.lang.System.in;
 import java.util.Scanner;
 
 public class RectangleArea {
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        int a = setSide();
-        int b = setSide();
+        int a = setIntValue();
+        int b = setIntValue();
 
-        int area = calculateRectangleArea(a, b);
-        out.println(area);
+        int rectArea = calculateRectangleArea(a, b);
+        out.println(rectArea);
     }
-    private static int setSide() {
-        int side;
+    private static int setIntValue() {
+        int value;
 
         try {
-            side = Integer.parseInt(scanner.nextLine());
-        } catch (Exception e){
-            out.println("Не сте въвели число. Пробвайте пак!");
-            return setSide();
+            value = Integer.parseInt(scanner.nextLine());
         }
-        if (side < 0) {
-            out.println("Моля въведе положително число!");
-            return setSide();
-        } else
-            return side;
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue();
+        }
+
+        if (value < 0) {
+            out.printf("Моля въведете положително число!");
+            return setIntValue();
+        }
+        else
+            return value;
     }
     private static int calculateRectangleArea(int a, int b) {
         return a * b;

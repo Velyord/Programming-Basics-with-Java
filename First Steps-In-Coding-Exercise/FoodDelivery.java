@@ -40,9 +40,9 @@
 */
 package SoftUni.Exer4;
 
+import static java.lang.System.out;
+import static java.lang.System.in;
 import java.util.Scanner;
-
-import static java.lang.System.*;
 
 public class FoodDelivery {
     static Scanner scanner = new Scanner(in);
@@ -51,25 +51,31 @@ public class FoodDelivery {
         int chickenMenus = setIntValue(0, 99, "пилешки");
         int fishMenus = setIntValue(0, 99, "рибни");
         int veganMenus = setIntValue(0, 99, "вегетариански");
+        
+        double price = calculatePrice(chickenMenus, fishMenus, veganMenus);
 
-        double priceForChicken = 10.35;
-        double priceForFish = 12.40;
-        double priceForVegan = 8.15;
-        double priceDelivery = 2.50;
-
-        double priceOfChickenMenus = chickenMenus * priceForChicken;
-        double priceOfFishMenus = fishMenus * priceForFish;
-        double priceOfVeganMenus = veganMenus * priceForVegan;
-
-        double sumMenus = priceOfChickenMenus + priceOfFishMenus + priceOfVeganMenus;
-        double desert = sumMenus * 0.20;
-        double sumAll = sumMenus + desert + priceDelivery;
-
-        out.printf("%.2f", sumAll);
+        out.printf("%.2f", price);
     }
+
+    private static double calculatePrice(int chickenMenus, int fishMenus, int veganMenus) {
+        double priceOfChicken = 10.35;
+        double priceOfFish = 12.40;
+        double priceOfVegan = 8.15;
+        double priceOfDelivery = 2.50;
+
+        double priceForChickenMenus = chickenMenus * priceOfChicken;
+        double priceForFishMenus = fishMenus * priceOfFish;
+        double priceForVeganMenus = veganMenus * priceOfVegan;
+
+        double sumMenus = priceForChickenMenus + priceForFishMenus + priceForVeganMenus;
+        double desert = sumMenus * 0.20;
+        
+        return sumMenus + desert + priceOfDelivery;
+    }
+
     private static int setIntValue(int min, int max, String menu) {
         int value;
-        out.println("Въведи брой "+menu+" менюта:");
+        out.println("Въведете брой " + menu + " менюта:");
         try {
             value = Integer.parseInt(scanner.nextLine());
         }
@@ -77,6 +83,7 @@ public class FoodDelivery {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setIntValue(min, max, menu);
         }
+        
         if (value < min || value > max) {
             out.printf("Моля въведе число между %d и %d!", min, max);
             return setIntValue(min, max, menu);

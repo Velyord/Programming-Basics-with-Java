@@ -27,54 +27,58 @@
 */
 package SoftUni.Exer4;
 
-import java.util.Scanner;
-import static java.lang.System.in;
 import static java.lang.System.out;
+import static java.lang.System.in;
+import java.util.Scanner;
 
 public class DepositCalculator {
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        double depSum = setDoubleValue(100, 10000);
-        int srok = setIntValue(1, 12);
-        double godLihPro = setDoubleValue(0, 100);
+        double depSum = setDoubleValue(100, 10000, "депозирана сума");
+        int srok = setIntValue(1, 12, "срок на депозита");
+        double godLihPro = setDoubleValue(0, 100, "годишен лихвен процент");
 
         double output = calculate(depSum, srok, godLihPro);
+
         out.println(output);
     }
     private static double calculate(double depSum, double srok, double godLihPro) {
         return depSum + depSum * (godLihPro / 100) / 12 * srok;
     }
-    private static double setDoubleValue(double min, double max) {
+    private static double setDoubleValue(double min, double max, String object) {
         double value;
+        out.println("Въведете " + object + ":");
 
         try {
             value = Double.parseDouble(scanner.nextLine());
         }
         catch (Exception e){
             out.println("Не сте въвели число. Пробвайте пак!");
-            return setDoubleValue(min, max);
+            return setDoubleValue(min, max, object);
         }
+
         if (value < min || value > max) {
             out.printf("Моля въведе число между %d и %d!", min, max);
-            return setDoubleValue(min, max);
+            return setDoubleValue(min, max, object);
         }
         else
             return value;
     }
-    private static int setIntValue(int min, int max) {
+    private static int setIntValue(int min, int max, String object) {
         int value;
+        out.println("Въведете " + object + ":");
 
         try {
             value = Integer.parseInt(scanner.nextLine());
         }
         catch (Exception e){
             out.println("Не сте въвели число. Пробвайте пак!");
-            return setIntValue(min, max);
+            return setIntValue(min, max, object);
         }
         if (value < min || value > max) {
             out.printf("Моля въведе число между %d и %d!", min, max);
-            return setIntValue(min, max);
+            return setIntValue(min, max, object);
         }
         else
             return value;

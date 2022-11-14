@@ -5,9 +5,9 @@
 */
 package SoftUni.Lab3;
 
-import java.util.Scanner;
 import static java.lang.System.out;
 import static java.lang.System.in;
+import java.util.Scanner;
 
 public class ConcatenateData {
     static Scanner scanner = new Scanner(in);

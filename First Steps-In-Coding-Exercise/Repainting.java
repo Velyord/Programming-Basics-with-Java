@@ -40,28 +40,59 @@
         Сума за майстори: (220.40 * 30%) * 1 = 66.12 лв.
         Крайна сума: 220.40 + 66.12 = 286.52 лв.
 */
-package SoftUni.Lab3;
+package SoftUni.Exer4;
 
-import static java.lang.System.out;
 import java.util.Scanner;
+import static java.lang.System.in;
+import static java.lang.System.out;
 
 public class Repainting {
+    static Scanner scanner = new Scanner(in);
+    
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int naylon = Integer.parseInt(scanner.nextLine());
-        int paint = Integer.parseInt(scanner.nextLine());
-        int vampires = Integer.parseInt(scanner.nextLine());
-        int hours = Integer.parseInt(scanner.nextLine());
-
-        double priceOfNaylon = (naylon + 2) * 1.50;
-        double priceOfPaint = paint * 1.1 * 14.50;
-        double priceOfVampires = vampires * 5.00;
-        double priceOfBags = 0.40;
-
-        double sumOfPrices = priceOfBags + priceOfVampires + priceOfPaint + priceOfNaylon;
-        double priceForBuilders = (sumOfPrices * 0.3) * hours;
-        double finalPrice = sumOfPrices + priceForBuilders;
+        int naylon = setIntValue(1, 100, "найлон");
+        int paint = setIntValue(1, 100, "боя");
+        int thinner = setIntValue(1, 100, "разредител");
+        int hours = setIntValue(1, 100, "чаове");
+        
+        double finalPrice = calculatePrice(naylon, paint, thinner, hours);
 
         out.printf("%.2f", finalPrice);
+    }
+
+    private static double calculatePrice(int naylon, int paint, int thinner, int hours) {
+        int bonusNaylon = 2;
+        double bonusPaint = 110/100.0;
+        double priceOfNaylon = 1.50;
+        double priceOfPaint = 14.50;
+        double priceOfThinner = 5.00;
+        double priceOfBags = 0.40;
+        double builderPercentage = 30/100.0;
+
+        double priceForNaylon = (naylon + bonusNaylon) * priceOfNaylon;
+        double priceForPaint = paint * bonusPaint * priceOfPaint;
+        double priceForThinner = thinner * priceOfThinner;
+        double sumOfPrices = priceOfBags + priceForThinner + priceForPaint + priceForNaylon;
+        double priceForBuilders = (sumOfPrices * builderPercentage) * hours;
+
+        return sumOfPrices + priceForBuilders;
+    }
+
+    private static int setIntValue(int min, int max, String quantity) {
+        int value;
+        out.println("Въведи количество "+quantity+":");
+        try {
+            value = Integer.parseInt(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue(min, max, quantity);
+        }
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setIntValue(min, max, quantity);
+        }
+        else
+            return value;
     }
 }

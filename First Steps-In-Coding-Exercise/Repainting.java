@@ -42,19 +42,19 @@
 */
 package SoftUni.Exer4;
 
-import java.util.Scanner;
-import static java.lang.System.in;
 import static java.lang.System.out;
+import static java.lang.System.in;
+import java.util.Scanner;
 
 public class Repainting {
     static Scanner scanner = new Scanner(in);
-    
+
     public static void main(String[] args) {
         int naylon = setIntValue(1, 100, "найлон");
         int paint = setIntValue(1, 100, "боя");
         int thinner = setIntValue(1, 100, "разредител");
-        int hours = setIntValue(1, 100, "чаове");
-        
+        int hours = setIntValue(1, 100, "часове");
+
         double finalPrice = calculatePrice(naylon, paint, thinner, hours);
 
         out.printf("%.2f", finalPrice);
@@ -78,19 +78,20 @@ public class Repainting {
         return sumOfPrices + priceForBuilders;
     }
 
-    private static int setIntValue(int min, int max, String quantity) {
+    private static int setIntValue(int min, int max, String object) {
         int value;
-        out.println("Въведи количество "+quantity+":");
+        out.println("Въведете количество " + object + ":");
+        
         try {
             value = Integer.parseInt(scanner.nextLine());
         }
         catch (Exception e){
             out.println("Не сте въвели число. Пробвайте пак!");
-            return setIntValue(min, max, quantity);
+            return setIntValue(min, max, object);
         }
         if (value < min || value > max) {
             out.printf("Моля въведе число между %d и %d!", min, max);
-            return setIntValue(min, max, quantity);
+            return setIntValue(min, max, object);
         }
         else
             return value;

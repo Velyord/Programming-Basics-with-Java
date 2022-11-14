@@ -26,14 +26,15 @@
 package SoftUni.Lab3;
 
 import static java.lang.System.out;
+import static java.lang.System.in;
 import java.util.Scanner;
 
 public class YardGreening {
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        out.println("Кв. метри, които ще бъдат озеленени: ");
-        double kvm = setKvm();
+        double kvm = setDoubleValue(0, 10000);
+
         double priceForKvm = 7.61;
         double discountPercentage = 0.18;
 
@@ -44,20 +45,22 @@ public class YardGreening {
         String output = "The final price is: %.2f lv. %nThe discount is: %.2f lv.";
         out.printf(output, finalPrice, discount);
     }
-    private static double setKvm() {
-        double kvm;
+    private static double setDoubleValue(double min, double max) {
+        double value;
+        out.println("Кв. метри, които ще бъдат озеленени: ");
 
         try {
-            kvm = Double.parseDouble(scanner.nextLine());
-        } catch (Exception e){
-            out.println("Не сте въвели число. Пробвайте пак!");
-            return setKvm();
+            value = Double.parseDouble(scanner.nextLine());
         }
-
-        if (kvm < 0.00 || kvm > 10000.00) {
-            out.println("Моля въведе число между 0 и 10000!");
-            return setKvm();
-        } else
-            return kvm;
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setDoubleValue(min, max);
+        }
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setDoubleValue(min, max);
+        }
+        else
+            return value;
     }
 }

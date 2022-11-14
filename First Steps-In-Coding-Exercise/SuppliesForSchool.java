@@ -1,8 +1,8 @@
 /*
     Условие:
-        Учебната година вече е започнала и отговорничката на 10Б клас - Ани трябва да купи определен брой пакетчета с химикали, пакетчета с маркери, както и препарат за почистване на дъска. Тя е редовна клиентка на една книжарница, затова има намаление за нея, което представлява някакъв процент от общата сума. Напишете програма, която изчислява колко пари ще трябва да събере Ани, за да плати сметката, като имате предвид следния ценоразпис: 
-        • Пакет химикали - 5.80 лв. 
-        • Пакет маркери - 7.20 лв. 
+        Учебната година вече е започнала и отговорничката на 10Б клас - Ани трябва да купи определен брой пакетчета с химикали, пакетчета с маркери, както и препарат за почистване на дъска. Тя е редовна клиентка на една книжарница, затова има намаление за нея, което представлява някакъв процент от общата сума. Напишете програма, която изчислява колко пари ще трябва да събере Ани, за да плати сметката, като имате предвид следния ценоразпис:
+        • Пакет химикали - 5.80 лв.
+        • Пакет маркери - 7.20 лв.
         • Препарат - 1.20 лв (за литър)
     Вход:
         От конзолата се четат 4 числа:
@@ -28,22 +28,56 @@
             13% = 0.13
             Цена с намаление = 43.60 – (43.60 * 0.13) = 37.932 лв.
 */
-package Exe4;
+package SoftUni.Exer4;
 
 import java.util.Scanner;
 import static java.lang.System.out;
 
 public class SuppliesForSchool {
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int numOfPenPacks = Integer.parseInt(scanner.nextLine());
-        int numOfMarkerPacks = Integer.parseInt(scanner.nextLine());
-        int litersOfCleaningDetergent = Integer.parseInt(scanner.nextLine());
-        int discountPercentage = Integer.parseInt(scanner.nextLine());
-        out.println(calculateSum(numOfPenPacks, numOfMarkerPacks, litersOfCleaningDetergent, discountPercentage));
+        int numOfPenPacks = setIntValue(0, 100, "брой пакети химикали");
+        int numOfMarkerPacks = setIntValue(0, 100, "брой пакети маркери");
+        int litersOfCleaningDetergent = setIntValue(0, 50, "литри препарат за почистване на дъска");
+        int discountPercentage = setIntValue(0, 100, "процент намаление");
+
+        double price = calculateSum(numOfPenPacks, numOfMarkerPacks, litersOfCleaningDetergent, discountPercentage);
+
+        out.println(price);
     }
+    
     private static double calculateSum(int numOfPenPacks, int numOfMarkerPacks, int litersOfCleaningDeturgent, int discountPercentage) {
-        double price = numOfPenPacks * 5.80 + numOfMarkerPacks * 7.20 + litersOfCleaningDeturgent * 1.20;
-        return price - price * discountPercentage / 100;
+        double priceOfPenPacks = 5.80;
+        double priceOfMarkerPacks = 7.20;
+        double priceOfCleaningDeturgent = 1.20;
+
+        double priceForPenPacks = numOfPenPacks * priceOfPenPacks;
+        double priceForMarkerPacks = numOfMarkerPacks * priceOfMarkerPacks;
+        double priceForCleaningDeturgent = litersOfCleaningDeturgent * priceOfCleaningDeturgent;
+
+        double price = priceForPenPacks + priceForMarkerPacks + priceForCleaningDeturgent;
+
+        return price - (price * discountPercentage / 100);
+    }
+    
+    private static int setIntValue(int min, int max, String quantity) {
+        int value;
+        out.println("Въведи " + quantity + ":");
+
+        try {
+            value = Integer.parseInt(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue(min, max, quantity);
+        }
+
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!", min, max);
+            return setIntValue(min, max, quantity);
+        }
+        else
+            return value;
     }
 }

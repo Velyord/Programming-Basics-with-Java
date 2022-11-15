@@ -37,6 +37,7 @@ public class RadiansToDegrees {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setDoubleValue();
         }
+        
         if (value < 0) {
             out.println("Моля въведе положително число");
             return setDoubleValue();

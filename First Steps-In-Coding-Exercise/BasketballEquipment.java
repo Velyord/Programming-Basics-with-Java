@@ -53,8 +53,8 @@ public class BasketballEquipment {
         return yearlyTax + kecove + ekip + topka + aksesors;
     }
     private static int setIntValue(int min, int max) {
-        int value;
         out.println("Въведете годишна такса за тренировки по баскетбол:");
+        int value;
         
         try {
             value = Integer.parseInt(scanner.nextLine());
@@ -63,6 +63,7 @@ public class BasketballEquipment {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setIntValue(min, max);
         }
+        
         if (value < min || value > max) {
             out.printf("Моля въведе число между %d и %d!", min, max);
             return setIntValue(min, max);

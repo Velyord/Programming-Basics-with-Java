@@ -22,6 +22,7 @@ public class USDtoBGN {
         double bgn = setDoubleValue();
 
         double bgnToUsd = convertBGNtoUSD(bgn);
+        
         out.println(bgnToUsd);
     }
 
@@ -31,8 +32,8 @@ public class USDtoBGN {
     }
 
     private static double setDoubleValue() {
+        out.println("Въведете сума лева: ");
         double value;
-        out.println("Въведи сума български пари: ");
         
         try {
             value = Double.parseDouble(scanner.nextLine());

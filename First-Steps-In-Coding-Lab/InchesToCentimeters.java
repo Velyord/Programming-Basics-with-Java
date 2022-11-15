@@ -15,6 +15,7 @@ public class InchesToCentimeters {
         double inches = setDoubleValue();
 
         double centimeters = inchesToCentimeters(inches);
+        
         out.println(centimeters);
     }
     

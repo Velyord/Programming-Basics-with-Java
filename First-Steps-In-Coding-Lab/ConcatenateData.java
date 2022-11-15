@@ -42,10 +42,9 @@ public class ConcatenateData {
     }
 
     private static String setStringValue() {
-        String value;
-        value = scanner.nextLine();
+        String value = scanner.nextLine();
         boolean isSpecChar = false;
-        String specialCharacters="!#$%&'()*+,./:;<=>?@[]^_`{|}0123456789";
+        String specialCharacters = "!#$%&'()*+,./:;<=>?@[]^_`{|}0123456789";
 
         for (int i = 0; i < value.length(); i++)
             if (specialCharacters.contains(Character.toString(value.charAt(i)))) {

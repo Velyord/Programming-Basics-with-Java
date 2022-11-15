@@ -15,7 +15,6 @@ public class InchesToCentimeters {
         double inches = setDoubleValue();
 
         double centimeters = inchesToCentimeters(inches);
-
         out.println(centimeters);
     }
     
@@ -24,8 +23,8 @@ public class InchesToCentimeters {
     }
 
     private static double setDoubleValue() {
-        double value;
         out.println("Inches: ");
+        double value;        
 
         try {
             value = Double.parseDouble(scanner.nextLine());
@@ -34,6 +33,7 @@ public class InchesToCentimeters {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setDoubleValue();
         }
+        
         if (value < 0) {
             out.println("Моля въведе положително число");
             return setDoubleValue();

@@ -51,6 +51,7 @@ public class FishTank {
 
         out.println(output);
     }
+    
     private static double calculateNujniLitri(int duljina, int shirina, int visochina, double procent) {
         int obem = duljina * shirina * visochina;
         double litri = obem * 0.001;
@@ -59,28 +60,9 @@ public class FishTank {
         return litri * procentVoda;
     }
 
-    private static int setIntValue(int min, int max, String object) {
-        int value;
-        out.println("Въведете " + object + ":");
-
-        try {
-            value = Integer.parseInt(scanner.nextLine());
-        }
-        catch (Exception e){
-            out.println("Не сте въвели число. Пробвайте пак!");
-            return setIntValue(min, max, object);
-        }
-        if (value < min || value > max) {
-            out.printf("Моля въведе число между %d и %d!\n", min, max);
-            return setIntValue(min, max, object);
-        }
-        else
-            return value;
-    }
-
     private static double setDoubleValue(double min, double max, String object) {
-        double value;
         out.println("Въведете " + object + ":");
+        double value;
 
         try {
             value = Double.parseDouble(scanner.nextLine());
@@ -93,6 +75,26 @@ public class FishTank {
         if (value < min || value > max) {
             out.printf("Моля въведе число между %f и %f!\n", min, max);
             return setDoubleValue(min, max, object);
+        }
+        else
+            return value;
+    }
+    
+    private static int setIntValue(int min, int max, String object) {
+        out.println("Въведете " + object + ":");
+        int value;
+
+        try {
+            value = Integer.parseInt(scanner.nextLine());
+        }
+        catch (Exception e){
+            out.println("Не сте въвели число. Пробвайте пак!");
+            return setIntValue(min, max, object);
+        }
+        
+        if (value < min || value > max) {
+            out.printf("Моля въведе число между %d и %d!\n", min, max);
+            return setIntValue(min, max, object);
         }
         else
             return value;

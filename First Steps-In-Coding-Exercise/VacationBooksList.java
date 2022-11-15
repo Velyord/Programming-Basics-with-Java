@@ -46,8 +46,8 @@ public class VacationBooksList {
     }
 
     private static int setIntValue(int min, int max, String output) {
-        int value;
         out.println("Въведи " + output + ":");
+        int value;
 
         try {
             value = Integer.parseInt(scanner.nextLine());

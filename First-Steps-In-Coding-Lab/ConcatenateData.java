@@ -42,16 +42,16 @@ public class ConcatenateData {
     }
 
     private static String setStringValue() {
-        String value = scanner.nextLine();
-        boolean isSpecChar = false;
         String specialCharacters = "!#$%&'()*+,./:;<=>?@[]^_`{|}0123456789";
+        boolean isSpecChar = false;
+        String value = scanner.nextLine();
 
         for (int i = 0; i < value.length(); i++)
             if (specialCharacters.contains(Character.toString(value.charAt(i)))) {
                 isSpecChar = true;
             }
         
-        if(isSpecChar) {
+        if (isSpecChar) {
             out.println("Моля въведете правилно име!");
             return setStringValue();
         }

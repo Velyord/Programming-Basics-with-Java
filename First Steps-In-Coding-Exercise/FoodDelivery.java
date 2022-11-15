@@ -74,8 +74,9 @@ public class FoodDelivery {
     }
 
     private static int setIntValue(int min, int max, String menu) {
-        int value;
         out.println("Въведете брой " + menu + " менюта:");
+        int value;
+        
         try {
             value = Integer.parseInt(scanner.nextLine());
         }

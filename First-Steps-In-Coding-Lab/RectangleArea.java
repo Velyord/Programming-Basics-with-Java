@@ -36,7 +36,7 @@ public class RectangleArea {
         }
 
         if (value < 0) {
-            out.printf("Моля въведете положително число!");
+            out.println("Моля въведете положително число!");
             return setIntValue();
         }
         else

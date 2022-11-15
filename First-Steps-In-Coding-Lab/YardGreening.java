@@ -46,8 +46,8 @@ public class YardGreening {
         out.printf(output, finalPrice, discount);
     }
     private static double setDoubleValue(double min, double max) {
-        double value;
         out.println("Кв. метри, които ще бъдат озеленени: ");
+        double value;
 
         try {
             value = Double.parseDouble(scanner.nextLine());
@@ -56,6 +56,7 @@ public class YardGreening {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setDoubleValue(min, max);
         }
+        
         if (value < min || value > max) {
             out.printf("Моля въведе число между %f и %f!\n", min, max);
             return setDoubleValue(min, max);

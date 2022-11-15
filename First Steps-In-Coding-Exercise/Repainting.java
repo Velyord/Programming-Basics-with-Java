@@ -89,6 +89,7 @@ public class Repainting {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setIntValue(min, max, object);
         }
+        
         if (value < min || value > max) {
             out.printf("Моля въведе число между %d и %d!", min, max);
             return setIntValue(min, max, object);

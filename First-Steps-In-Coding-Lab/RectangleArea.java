@@ -16,8 +16,14 @@ public class RectangleArea {
         int b = setIntValue();
 
         int rectArea = calculateRectangleArea(a, b);
+        
         out.println(rectArea);
     }
+    
+    private static int calculateRectangleArea(int a, int b) {
+        return a * b;
+    }
+    
     private static int setIntValue() {
         int value;
 
@@ -35,8 +41,5 @@ public class RectangleArea {
         }
         else
             return value;
-    }
-    private static int calculateRectangleArea(int a, int b) {
-        return a * b;
     }
 }

@@ -45,9 +45,9 @@ public class PetShop {
     }
     
     private static int setIntValue(int min, int max, String object) {
-        int value;
         out.println("Въведете броят на опаковките храна за " + object + ":");
-
+        int value;
+        
         try {
             value = Integer.parseInt(scanner.nextLine());
         }

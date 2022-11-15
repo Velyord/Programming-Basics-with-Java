@@ -68,6 +68,7 @@ public class ProjectsCreation {
         for (int i = 0; i < value.length(); i++)
             if (specialCharacters.contains(Character.toString(value.charAt(i)))) {
                 isSpecChar = true;
+                break;
             }
 
         if (isSpecChar) {

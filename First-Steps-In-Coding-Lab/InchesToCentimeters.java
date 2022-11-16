@@ -36,7 +36,7 @@ public class InchesToCentimeters {
         }
         
         if (value < 0) {
-            out.println("Моля въведе положително число");
+            out.println("Моля въведете положително число");
             return setDoubleValue();
         }
         else

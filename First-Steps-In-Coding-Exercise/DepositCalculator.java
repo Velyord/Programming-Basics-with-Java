@@ -61,7 +61,7 @@ public class DepositCalculator {
         }
         
         if (value < min || value > max) {
-            out.printf("Моля въведе число между %d и %d!\n", min, max);
+            out.printf("Моля въведете число между %d и %d!\n", min, max);
             return setIntValue(min, max, object);
         }
         else
@@ -81,7 +81,7 @@ public class DepositCalculator {
         }
 
         if (value < min || value > max) {
-            out.printf("Моля въведе число между %f и %f!\n", min, max);
+            out.printf("Моля въведете число между %f и %f!\n", min, max);
             return setDoubleValue(min, max, object);
         }
         else

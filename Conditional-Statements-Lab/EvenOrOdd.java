@@ -15,10 +15,10 @@
  */
 package SoftUni.Lab5;
 
-import static java.lang.Math.max;
 import static java.lang.System.out;
 import static java.lang.System.in;
 import java.util.Scanner;
+import static java.lang.Math.max;
 
 public class EvenOrOdd {
     static Scanner scanner = new Scanner(in);

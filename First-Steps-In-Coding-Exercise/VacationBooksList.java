@@ -60,7 +60,7 @@ public class VacationBooksList {
         return value;
         /*
         if (value < min || value > max) {
-            out.printf("Моля въведе число между %d и %d!", min, max);
+            out.printf("Моля въведете число между %d и %d!\n", min, max);
             return setIntValue(min, max, output);
         }
         else

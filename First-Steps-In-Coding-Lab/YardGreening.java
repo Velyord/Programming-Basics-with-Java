@@ -58,7 +58,7 @@ public class YardGreening {
         }
         
         if (value < min || value > max) {
-            out.printf("Моля въведе число между %f и %f!\n", min, max);
+            out.printf("Моля въведете число между %f и %f!\n", min, max);
             return setDoubleValue(min, max);
         }
         else

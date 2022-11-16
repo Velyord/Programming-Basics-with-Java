@@ -32,15 +32,12 @@ public class EvenOrOdd {
     }
 
     private static String checkEvenOrOdd(int num) {
-        String output;
         boolean isEven = (num % 2 == 0);
         
         if (isEven)
-            output = "even";
+            return "even";
         else 
-            output = "odd";
-        
-        return output;
+            return "odd";
     }
 
     @SuppressWarnings("unchecked")

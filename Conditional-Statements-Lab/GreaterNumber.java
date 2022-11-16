@@ -43,6 +43,7 @@ public class GreaterNumber {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setValue();
         }
+        
         return (T) value;
     }
 }

@@ -31,9 +31,12 @@ public class SumSeconds {
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        int first = setValue(1, 50, "първия");
-        int second = setValue(1, 50, "втория");
-        int third = setValue(1, 50, "третия");
+        int min = 1;
+        int max = 50;
+        
+        int first = setValue(min, max);
+        int second = setValue(min, max);
+        int third = setValue(min, max);
 
         String result = calculateTime(first, second, third);
 
@@ -52,10 +55,9 @@ public class SumSeconds {
     }
 
     @SuppressWarnings("unchecked")
-    private static <T> T setValue(T min, T max, String thing) {
+    private static <T> T setValue(T min, T max) {
         Object value;
         boolean isIntArgs = min instanceof Integer && max instanceof Integer;
-        out.println("Въведете секунди на " + thing + " състезател:");
 
         try {
             if (isIntArgs)
@@ -64,18 +66,18 @@ public class SumSeconds {
                 value = Double.parseDouble(scanner.nextLine());
         } catch (Exception e) {
             out.println("Не сте въвели число. Пробвайте пак!");
-            return setValue(min, max, thing);
+            return setValue(min, max);
         }
 
         if (isIntArgs) {
             if ((int) value < (int) min || (int) value > (int) max) {
                 out.printf("Моля въведе число между %s и %s!\n", min, max);
-                return setValue(min, max, thing);
+                return setValue(min, max);
             }
         } else {
             if ((double) value < (double) min || (double) value > (double) max) {
                 out.printf("Моля въведе число между %s и %s!\n", min, max);
-                return setValue(min, max, thing);
+                return setValue(min, max);
             }
         }
         return (T) value;

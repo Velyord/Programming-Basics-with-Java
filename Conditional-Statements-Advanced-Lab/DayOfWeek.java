@@ -4,22 +4,14 @@
     (на английски език), в граници [1...7] или отпечатва "Error" в случай, че въведеното число е
     невалидно.
 Примерен вход и изход"
-    1
-    -> Monday
-    2
-    -> Tuesday
-    3
-    -> Wednesday
-    4
-    -> Thursday
-    5
-    -> Friday
-    6
-    -> Saturday
-    7
-    -> Sunday
-    -1
-    -> Error
+    1 -> Monday
+    2 -> Tuesday
+    3 -> Wednesday
+    4 -> Thursday
+    5 -> Friday
+    6 -> Saturday
+    7 -> Sunday
+    -1 -> Error
  */
 package SoftUni.Lab7;
 

@@ -33,6 +33,7 @@ public class DayOfWeek {
 
     public static void main(String[] args) {
         int day = Integer.parseInt(scanner.nextLine());
+        
         switch (day) {
             case 1:     out.println("Monday");      break;
             case 2:     out.println("Tuesday");     break;

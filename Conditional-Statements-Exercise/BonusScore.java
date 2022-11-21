@@ -64,14 +64,13 @@ public class BonusScore {
 
     @SuppressWarnings("unchecked")
     private static <T> T setValue(T min) {
-        Object value;
         boolean isIntArgs = min instanceof Integer;
+        Object value;
+        out.println("Въведете точки: ");
 
         try {
-            if (isIntArgs)
-                value = Integer.parseInt(scanner.nextLine());
-            else
-                value = Double.parseDouble(scanner.nextLine());
+            value = Integer.parseInt(scanner.nextLine());
+
         } catch (Exception e) {
             out.println("Не сте въвели число. Пробвайте пак!");
             return setValue(min);
@@ -79,15 +78,11 @@ public class BonusScore {
 
         if (isIntArgs) {
             if ((int) value < (int) min) {
-                out.printf("Моля въведете положително число");
-                return setValue(min);
-            }
-        } else {
-            if ((double) value < (double) min) {
-                out.printf("Моля въведете положително число");
+                out.println("Моля въведете положително число");
                 return setValue(min);
             }
         }
+
         return (T) value;
     }
 }

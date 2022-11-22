@@ -1,3 +1,19 @@
+/*
+Условие:
+    Да се напише програма която чете ден от седмицата (текст) – въведен от потребителя и принтира на 
+    конзолата цената на билет за кино според деня от седмицата:
+        Monday 12
+        Tuesday 12
+        Wednesday 14
+        Thursday 14
+        Friday 12
+        Saturday 16
+        Sunday 16
+Примерен вход и изход:
+    Monday -> 12
+    Friday -> 12
+    Sunday -> 16
+ */
 package SoftUni.Lab7;
 
 import static java.lang.System.out;
@@ -9,7 +25,7 @@ public class CinemaTicket {
 
     public static void main(String[] args) {
         String day = setStringValue();
-        
+
         checkPriceForDay(day);
     }
 

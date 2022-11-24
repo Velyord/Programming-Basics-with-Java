@@ -103,7 +103,10 @@ public class Journey {
     }
 
     private static String setVacation(String season, String destination) {
-        if (season.equals("summer") && !destination.equals("Europe"))
+        boolean isSummer = season.equals("summer");
+        boolean isEurope = destination.equals("Europe");
+        
+        if (isSummer && !isEurope)
             return "Camp";
         else
             return "Hotel";
@@ -164,13 +167,13 @@ public class Journey {
         if (isSpecChar) {
             out.println("Моля въведете правилно наименование!");
             return setStringValue();
-        } 
-        
+        }
+
         if (!value.equals("summer") && !value.equals("winter")) {
             out.println("Моля въведете един от следните сезони [summer, winter]");
             return setStringValue();
         }
-        
+
         return value;
     }
 }

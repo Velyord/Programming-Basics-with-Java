@@ -46,9 +46,10 @@
  */
 package SoftUni.Exer8;
 
+import static java.lang.System.exit;
+import static java.lang.System.out;
+import static java.lang.System.in;
 import java.util.Scanner;
-
-import static java.lang.System.*;
 
 public class Journey {
     static Scanner scanner = new Scanner(in);
@@ -80,17 +81,23 @@ public class Journey {
                 switch (season) {
                     case "summer":  return 30;
                     case "winter":  return 70;
+                    default: exit(1);
                 } break;
             case "Balkans":
                 switch (season) {
                     case "summer":  return 40;
                     case "winter":  return 80;
+                    default: exit(1);
                 } break;
             case "Europe":
                 switch (season) {
                     case "summer":
                     case "winter":  return 90;
+                    default: exit(1);
                 } break;
+            default:
+                exit(1);
+                break;
         }
         return 0;
     }
@@ -157,7 +164,13 @@ public class Journey {
         if (isSpecChar) {
             out.println("Моля въведете правилно наименование!");
             return setStringValue();
-        } else
-            return value;
+        } 
+        
+        if (!value.equals("summer") && !value.equals("winter")) {
+            out.println("Моля въведете един от следните сезони [summer, winter]");
+            return setStringValue();
+        }
+        
+        return value;
     }
 }

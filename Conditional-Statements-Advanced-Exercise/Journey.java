@@ -105,11 +105,8 @@ public class Journey {
     private static String setVacation(String season, String destination) {
         boolean isSummer = season.equals("summer");
         boolean isEurope = destination.equals("Europe");
-        
-        if (isSummer && !isEurope)
-            return "Camp";
-        else
-            return "Hotel";
+
+        return (isSummer && !isEurope) ? "Camp" : "Hotel";
     }
 
     private static String setDestination(double budget) {

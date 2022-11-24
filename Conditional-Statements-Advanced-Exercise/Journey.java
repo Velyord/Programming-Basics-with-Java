@@ -56,7 +56,7 @@ public class Journey {
     public static void main(String[] args) {
         double budget = setValue(10.0, 5000.0);
         String season = setStringValue();
-        
+
         displayDestinationAndMoneySpent(budget, season);
     }
 
@@ -64,8 +64,8 @@ public class Journey {
         String destination = setDestination(budget);
         String vacation = setVacation(season, destination);
         double spentMoney = calculateSpentMoney(season, destination, budget);
-        
-        out.printf("Somewhere in %s\n%s – %.2f", destination, vacation, spentMoney);
+
+        out.printf("Somewhere in %s\n%s - %.2f", destination, vacation, spentMoney);
     }
 
     private static double calculateSpentMoney(String season, String destination, double budget) {
@@ -95,14 +95,14 @@ public class Journey {
         return 0;
     }
 
-    private static String setVacation(String season, String destination) {  
+    private static String setVacation(String season, String destination) {
         if (season.equals("summer") && !destination.equals("Europe"))
             return "Camp";
         else
             return "Hotel";
     }
 
-    private static String setDestination(double budget) {        
+    private static String setDestination(double budget) {
         if (budget <= 100)
             return "Bulgaria";
         else if (budget <= 1000)

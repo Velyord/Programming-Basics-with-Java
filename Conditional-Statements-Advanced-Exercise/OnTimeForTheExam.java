@@ -92,9 +92,9 @@ public class OnTimeForTheExam {
         int examInMinutes = examHour * 60 + examMinutes;
         int arrivalInMinutes = arrivalHour * 60 + arrivalMinutes;
 
-        boolean isLate = arrivalInMinutes > examInMinutes;
-        boolean isOnTime = (examInMinutes - arrivalInMinutes) <= 30;
-        boolean isEarly = (examInMinutes - arrivalInMinutes) > 30;
+        boolean isLate =    (examInMinutes - arrivalInMinutes) < 0;
+        boolean isOnTime =  (examInMinutes - arrivalInMinutes) <= 30;
+        boolean isEarly =   (examInMinutes - arrivalInMinutes) > 30;
 
         if (isLate)
             out.println("Late");

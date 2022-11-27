@@ -55,6 +55,7 @@ package SoftUni.Exer8;
 import static java.lang.System.out;
 import static java.lang.System.in;
 
+import java.io.StringBufferInputStream;
 import java.util.List;
 import java.util.Scanner;
 
@@ -84,12 +85,13 @@ public class OperationsBetweenNumbers {
                 default:                                 break;
             }
 
-            if (operator == '+' || operator == '-' || operator == '*') 
-                out.printf("%d %c %d = %.0f - %s", num1, operator, num2, result, (result % 2 == 0) ? "even" : "odd");
-            else if (operator == '/') 
-                out.printf("%d %c %d = %.2f", num1, operator, num2, result);
-            else if (operator == '%')
-                out.printf("%d %c %d = %.0f", num1, operator, num2, result);
+            String evenOrOdd = (result % 2 == 0) ? "even" : "odd";
+            String formattedResult = (operator == '/') ? String.format("%.2f", result) : String.format("%.0f", result);
+
+            if (operator == '+' || operator == '-' || operator == '*')
+                out.printf("%d %c %d = %s - %s", num1, operator, num2, formattedResult, evenOrOdd);
+            else
+                out.printf("%d %c %d = %s", num1, operator, num2, formattedResult);
         }
     }
 

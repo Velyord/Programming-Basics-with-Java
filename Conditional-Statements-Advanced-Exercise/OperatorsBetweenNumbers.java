@@ -71,25 +71,22 @@ public class OperationsBetweenNumbers {
 
     private static void calculate(int num1, char operator, int num2) {
         double result = 0;
-        String evenOrOdd = "odd";
+        String evenOrOdd = "";
 
         switch (operator) {
             case '+':
                 result = num1 + num2;
-                if (result % 2 == 0)
-                    evenOrOdd = "even";
+                evenOrOdd = (result % 2 == 0) ? "even" : "odd";
                 out.printf("%d %c %d = %.0f - %s", num1, operator, num2, result, evenOrOdd);
                 break;
             case '-':
                 result = num1 - num2;
-                if (result % 2 == 0)
-                    evenOrOdd = "even";
+                evenOrOdd = (result % 2 == 0) ? "even" : "odd";
                 out.printf("%d %c %d = %.0f - %s", num1, operator, num2, result, evenOrOdd);
                 break;
             case '*':
                 result = num1 * num2;
-                if (result % 2 == 0)
-                    evenOrOdd = "even";
+                evenOrOdd = (result % 2 == 0) ? "even" : "odd";
                 out.printf("%d %c %d = %.0f - %s", num1, operator, num2, result, evenOrOdd);
                 break;
             case '/':

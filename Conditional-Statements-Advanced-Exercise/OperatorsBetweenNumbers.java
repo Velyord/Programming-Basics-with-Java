@@ -71,42 +71,25 @@ public class OperationsBetweenNumbers {
 
     private static void calculate(int num1, char operator, int num2) {
         double result = 0;
-        String evenOrOdd = "";
 
-        switch (operator) {
-            case '+':
-                result = num1 + num2;
-                evenOrOdd = (result % 2 == 0) ? "even" : "odd";
-                out.printf("%d %c %d = %.0f - %s", num1, operator, num2, result, evenOrOdd);
-                break;
-            case '-':
-                result = num1 - num2;
-                evenOrOdd = (result % 2 == 0) ? "even" : "odd";
-                out.printf("%d %c %d = %.0f - %s", num1, operator, num2, result, evenOrOdd);
-                break;
-            case '*':
-                result = num1 * num2;
-                evenOrOdd = (result % 2 == 0) ? "even" : "odd";
-                out.printf("%d %c %d = %.0f - %s", num1, operator, num2, result, evenOrOdd);
-                break;
-            case '/':
-                if (num2 == 0) {
-                    out.printf("Cannot divide %d by zero", num1);
-                } else {
-                    result = (double) num1 / num2;
-                    out.printf("%d %c %d = %.2f", num1, operator, num2, result);
-                }
-                break;
-            case '%':
-                if (num2 == 0) {
-                    out.printf("Cannot divide %d by zero", num1);
-                } else {
-                    result = num1 % num2;
-                    out.printf("%d %c %d = %.0f", num1, operator, num2, result);
-                }
-                break;
-            default:
-                break;
+        if (num2 == 0 && (operator == '/' || operator == '%'))
+            out.printf("Cannot divide %d by zero", num1);
+        else {
+            switch (operator) {
+                case '+': result = num1 + num2;          break;
+                case '-': result = num1 - num2;          break;
+                case '*': result = num1 * num2;          break;
+                case '/': result = (double) num1 / num2; break;
+                case '%': result = num1 % num2;          break;
+                default:                                 break;
+            }
+
+            if (operator == '+' || operator == '-' || operator == '*') 
+                out.printf("%d %c %d = %.0f - %s", num1, operator, num2, result, (result % 2 == 0) ? "even" : "odd");
+            else if (operator == '/') 
+                out.printf("%d %c %d = %.2f", num1, operator, num2, result);
+            else if (operator == '%')
+                out.printf("%d %c %d = %.0f", num1, operator, num2, result);
         }
     }
 

@@ -92,46 +92,26 @@ public class OnTimeForTheExam {
         int examInMinutes = examHour * 60 + examMinutes;
         int arrivalInMinutes = arrivalHour * 60 + arrivalMinutes;
 
-        boolean isLate = (
-            arrivalInMinutes > examInMinutes
-        );
-        boolean isOnTime = (
-            (examInMinutes >= arrivalInMinutes) &&
-            ((examInMinutes - arrivalInMinutes) <= 30)
-        );
-        boolean isEarly = (
-            (examInMinutes > arrivalInMinutes) &&
-            ((examInMinutes - arrivalInMinutes) > 30)
-        );
+        boolean isLate = arrivalInMinutes > examInMinutes;
+        boolean isOnTime = (examInMinutes - arrivalInMinutes) <= 30;
+        boolean isEarly = (examInMinutes - arrivalInMinutes) > 30;
+
+        if (isLate)
+            out.println("Late");
+        else if (isOnTime)
+            out.println("On Time");
+        else if (isEarly)
+            out.println("Early");
 
         int timeDiff = abs(arrivalInMinutes - examInMinutes);
-        String timeDiffInHours;
-        if (timeDiff % 60 < 10)
-            timeDiffInHours = (timeDiff / 60) + ":0" + (timeDiff % 60);
-        else
-            timeDiffInHours = (timeDiff / 60) + ":" + (timeDiff % 60);
+        String beforeOrAfter = (examInMinutes - arrivalInMinutes) < 0 ? "after" : "before";
 
-        if (isLate) {
-            out.println("Late");
-            if (timeDiff < 60)
-                out.printf("%d minutes after the start", timeDiff);
-            else
-                out.printf("%s hours after the start", timeDiffInHours);
-        } else if (isOnTime) {
-            out.println("On Time");
-            if (timeDiff == 0)
-                out.print("");
-            else if (timeDiff < 60)
-                out.printf("%d minutes before the start", timeDiff);
-            else
-                out.printf("%s hours before the start", timeDiffInHours);
-        } else if (isEarly) {
-            out.println("Early");
-            if (timeDiff < 60)
-                out.printf("%d minutes before the start", timeDiff);
-            else
-                out.printf("%s hours before the start", timeDiffInHours);
-        }
+        if (timeDiff == 0)
+            out.print("");
+        else if (timeDiff < 60)
+            out.printf("%d minutes %s the start", timeDiff, beforeOrAfter);
+        else
+            out.printf("%d:%02d hours %s the start", (timeDiff / 60), (timeDiff % 60), beforeOrAfter);
     }
 
     @SuppressWarnings("unchecked")

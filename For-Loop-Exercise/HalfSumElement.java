@@ -61,7 +61,7 @@ public class HalfSumElement {
 
     public static void main(String[] args) {
         int nums = setValue(0, Integer.MAX_VALUE);
-        
+
         checkIfSumEquelsMax(nums);
     }
 
@@ -76,14 +76,16 @@ public class HalfSumElement {
                 max = num;
         }
 
+        sum -= max;
+
         displayResult(sum, max);
     }
 
     private static void displayResult(int sum, int max) {
-        if (sum - max == max)
-            out.printf("Yes\nSum = %d", sum - max);
+        if (sum == max)
+            out.printf("Yes\nSum = %d", sum);
         else
-            out.printf("No\nDiff = %d", abs(sum - max - max));
+            out.printf("No\nDiff = %d", abs(sum - max));
     }
 
     @SuppressWarnings("unchecked")

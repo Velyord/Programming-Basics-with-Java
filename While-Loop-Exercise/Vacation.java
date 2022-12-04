@@ -112,7 +112,7 @@ public class Vacation {
     public static void main(String[] args) {
         double neededMoney = setValue(1.00, 25000.00);
         double availableMoney = setValue(0.00, 25000.00);
-        
+
         checkIfMoneySaved(neededMoney, availableMoney);
     }
 
@@ -132,17 +132,7 @@ public class Vacation {
                     break;
                 case "spend":
                     spentCount++;
-
-                    if (spentCount == 5) {
-                        out.printf("You can't save the money.\n%d", days);
-                        break;
-                    }
-
                     availableMoney -= money;
-
-                    if (availableMoney < 0)
-                        availableMoney = 0;
-
                     break;
             }
 
@@ -150,6 +140,14 @@ public class Vacation {
                 out.printf("You saved the money for %d days.", days);
                 break;
             }
+
+            if (spentCount == 5) {
+                out.printf("You can't save the money.\n%d", days);
+                break;
+            }
+
+            if (availableMoney < 0)
+                availableMoney = 0;
         }
     }
 

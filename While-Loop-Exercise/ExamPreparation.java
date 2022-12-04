@@ -65,12 +65,12 @@ public class ExamPreparation {
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        int grades = setValue(1, 5);
+        int maxBadGrades = setValue(1, 5);
 
-        checkScore(grades);
+        checkScore(maxBadGrades);
     }
 
-    private static void checkScore(int grades) {
+    private static void checkScore(int maxBadGrades) {
         int sumScore = 0;
         int problemsCount = 0;
         int badGrades = 0;
@@ -78,22 +78,22 @@ public class ExamPreparation {
 
         while (true) {
             String problem = scanner.nextLine();
-            
+
             if (problem.equals("Enough")) {
                 displayResult(sumScore, problemsCount, lastProblem);
                 break;
             } else {
                 lastProblem = problem;
                 int score = setValue(2, 6);
-                
+
                 if (score <= 4)
                     badGrades++;
-                
-                if (badGrades == grades) {
+
+                if (badGrades == maxBadGrades) {
                     out.printf("You need a break, %d poor grades.", badGrades);
                     break;
                 }
-                
+
                 sumScore += score;
                 problemsCount++;
             }

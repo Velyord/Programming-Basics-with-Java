@@ -120,17 +120,18 @@ public class Vacation {
             String spendOrSave = setValue(null, null);
             double money = setValue(0.01, 25000.00);
             days++;
-
-            if (spendOrSave.equals("save")) {
-                spendedCount = 0;
-                availableMoney += money;
-            }
-
-            if (spendOrSave.equals("spend")) {
-                spendedCount++;
-                availableMoney -= money;
-            }
             
+            switch (spendOrSave) {
+                case "save":
+                    spendedCount = 0;
+                    availableMoney += money;
+                    break;
+                case "spend":
+                    spendedCount++;
+                    availableMoney -= money;
+                    break;
+            }
+
             if (availableMoney < 0)
                 availableMoney = 0;
 

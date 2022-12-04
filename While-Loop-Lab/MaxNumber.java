@@ -30,12 +30,10 @@
  */
 package SoftUni.Lab11;
 
-import static java.lang.System.exit;
 import static java.lang.System.out;
 import static java.lang.System.in;
 
 import java.util.Scanner;
-import java.util.List;
 
 public class MaxNumber {
     static Scanner scanner = new Scanner(in);

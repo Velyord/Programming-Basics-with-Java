@@ -105,7 +105,6 @@ public class OddEvenSum {
             }
         } else {
             try {
-            try {
                 if (max instanceof Integer)
                     value = Integer.parseInt(scanner.nextLine());
                 else if (max instanceof Double)

@@ -121,7 +121,6 @@ public class Moving {
             } */
         } else {
             try {
-            try {
                 if (max instanceof Integer)
                     value = Integer.parseInt(scanner.nextLine());
                 else if (max instanceof Double)
@@ -138,7 +137,7 @@ public class Moving {
 
             if (max instanceof Integer) {
                 if ((int) value < (int) min || (int) value > (int) max) {
-                    if ((int) min == 0 && (int) max == Double.MAX_VALUE)
+                    if ((int) min == 0 && (int) max == Integer.MAX_VALUE)
                         out.println("Моля въведете положително число:");
                     else
                         out.printf("Моля въведете число между %s и %s:\n", min, max);

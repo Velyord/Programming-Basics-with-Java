@@ -97,6 +97,5 @@ public class SumPrimeNonPrime {
     private static void displayResult(int sumPrime, int sumNonPrime) {
         out.println("Sum of all prime numbers is: " + sumPrime);
         out.println("Sum of all non prime numbers is: " + sumNonPrime);
-
     }
 }

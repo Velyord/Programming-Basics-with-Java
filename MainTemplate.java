@@ -16,8 +16,8 @@ public class MainTemplate {
     static int biggestInt = Integer.MAX_VALUE;
     static double smallestDouble = -1 * Double.MAX_VALUE;
     static double biggestDouble = Double.MAX_VALUE;
-    static Scanner scanner = new Scanner(in);
     
+    static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
 

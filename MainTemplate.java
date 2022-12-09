@@ -1,6 +1,5 @@
 /*
 Условие:
-
 */
 package SoftUni.PackageName;
 
@@ -11,7 +10,7 @@ import static java.lang.System.in;
 import java.util.Scanner;
 import java.util.List;
 
-public class Main {
+public class MainTemplate {
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
@@ -41,17 +40,15 @@ public class Main {
             /*
             String[] required = { "" };
             List<String> requiredList = List.of(required);
-
             if (!requiredList.contains(value)){
                 out.print("Моля въведете един от следните избори: | ");
-
                 for (String thing : required)
                     out.print(thing + " | ");
-
                 out.println();
                 return setValue(null, null);
             } */
-        } else {
+        } 
+        else {
             try {
                 if (max instanceof Integer)
                     value = Integer.parseInt(scanner.nextLine());

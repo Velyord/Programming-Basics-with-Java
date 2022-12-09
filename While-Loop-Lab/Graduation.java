@@ -114,12 +114,13 @@ public class Graduation {
             } */
         } else {
             try {
+            try {
                 if (max instanceof Integer)
                     value = Integer.parseInt(scanner.nextLine());
                 else if (max instanceof Double)
                     value = Double.parseDouble(scanner.nextLine());
                 else {
-                    out.println("Грешка! Не сте въвели правилен тип. Възможности [int, double]");
+                    out.println("Грешка!");
                     value = null;
                     exit(1);
                 }
@@ -130,13 +131,21 @@ public class Graduation {
 
             if (max instanceof Integer) {
                 if ((int) value < (int) min || (int) value > (int) max) {
-                    out.println("Моля въведете положително число между");
+                    if ((int) min == 0 && (int) max == Double.MAX_VALUE)
+                        out.println("Моля въведете положително число:");
+                    else
+                        out.printf("Моля въведете число между %s и %s:\n", min, max);
+
                     return setValue(min, max);
                 }
             }
             if (max instanceof Double) {
                 if ((double) value < (double) min || (double) value > (double) max) {
-                    out.println("Моля въведете положително число между");
+                    if ((double) min == 0 && (double) max == Double.MAX_VALUE)
+                        out.println("Моля въведете положително число:");
+                    else
+                        out.printf("Моля въведете число между %s и %s:\n", min, max);
+
                     return setValue(min, max);
                 }
             }

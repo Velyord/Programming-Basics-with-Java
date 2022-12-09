@@ -73,9 +73,9 @@ public class Travelling {
         
         while (!input.equals("End")) {
             String destination = input;
-            double destinationMoney = setValue(Double.MIN_VALUE, Double.MAX_VALUE);
+            double destinationMoney = setValue(-1 * Double.MAX_VALUE, Double.MAX_VALUE);
             while (true) {
-                double inputMoney = setValue(Double.MIN_VALUE, Double.MAX_VALUE);
+                double inputMoney = setValue(-1 * Double.MAX_VALUE, Double.MAX_VALUE);
                 destinationMoney -= inputMoney;
                 if (destinationMoney <= 0) {
                     out.printf("Going to %s!\n", destination);
@@ -137,7 +137,7 @@ public class Travelling {
 
             if (max instanceof Integer) {
                 if ((int) value < (int) min || (int) value > (int) max) {
-                    if ((int) min == 0 && (int) max == Double.MAX_VALUE)
+                    if ((int) min == 0 && (int) max == Integer.MAX_VALUE)
                         out.println("Моля въведете положително число:");
                     else
                         out.printf("Моля въведете число между %s и %s:\n", min, max);

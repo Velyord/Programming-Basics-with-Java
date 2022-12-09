@@ -221,7 +221,7 @@ public class CinemaTickets {
 
             if (max instanceof Integer) {
                 if ((int) value < (int) min || (int) value > (int) max) {
-                    if ((int) min == 0 && (int) max == Double.MAX_VALUE)
+                    if ((int) min == 0 && (int) max == Integer.MAX_VALUE)
                         out.println("Моля въведете положително число:");
                     else
                         out.printf("Моля въведете число между %s и %s:\n", min, max);

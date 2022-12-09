@@ -21,12 +21,16 @@ import java.util.Scanner;
 import java.util.List;
 
 public class TrapeziodArea {
+    static int smallestInt = Integer.MIN_VALUE;
+    static int biggestInt = Integer.MAX_VALUE;
+    static double smallestDouble = -1 * Double.MAX_VALUE;
+    static double biggestDouble = Double.MAX_VALUE;
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        double b1 = setValue(0.0, Double.MAX_VALUE);
-        double b2 = setValue(0.0, Double.MAX_VALUE);
-        double h = setValue(0.0, Double.MAX_VALUE);
+        double b1 = setValue(0.0, biggestDouble);
+        double b2 = setValue(0.0, biggestDouble);
+        double h = setValue(0.0, biggestDouble);
         
         double trapezoidArea = calcTrapezoidArea(b1, b2, h);
         
@@ -86,7 +90,7 @@ public class TrapeziodArea {
 
             if (max instanceof Integer) {
                 if ((int) value < (int) min || (int) value > (int) max) {
-                    if ((int) min == 0 && (int) max == Double.MAX_VALUE)
+                    if ((int) min == 0 && (int) max == biggestInt)
                         out.println("Моля въведете положително число:");
                     else
                         out.printf("Моля въведете число между %s и %s:\n", min, max);
@@ -96,7 +100,7 @@ public class TrapeziodArea {
             }
             if (max instanceof Double) {
                 if ((double) value < (double) min || (double) value > (double) max) {
-                    if ((double) min == 0 && (double) max == Double.MAX_VALUE)
+                    if ((double) min == 0 && (double) max == biggestDouble)
                         out.println("Моля въведете положително число:");
                     else
                         out.printf("Моля въведете число между %s и %s:\n", min, max);

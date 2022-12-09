@@ -1,5 +1,6 @@
 /*
 Условие:
+    
 */
 package SoftUni.PackageName;
 

@@ -90,33 +90,33 @@ public class BestPlayer {
         int maxGoals = 0;
         String bestPlayer = "";
         String input = setValue(null, null);
-        
-        while (!input.equals("End")) {
+
+        while (!input.equals("END")) {
             String name = input;
             int countGoals = setValue(1, 10000);
-            
+
             if (countGoals > maxGoals) {
                 maxGoals = countGoals;
                 bestPlayer = name;
             }
-            
+
             if (countGoals >= 10)
                 break;
-            
+
             input = setValue(null, null);
         }
-        displayResult(bestPlayer, maxGoals);        
+        displayResult(bestPlayer, maxGoals);
     }
 
     private static void displayResult(
-            String bestPlayer, 
+            String bestPlayer,
             int maxGoals
     ) {
-        out.printf("%s is the best player!", bestPlayer);
-        
+        out.printf("%s is the best player!\n", bestPlayer);
+
         if (maxGoals >= 3)
             out.printf("He has scored %d goals and made a hat-trick !!!", maxGoals);
-        else 
+        else
             out.printf("He has scored %d goals.", maxGoals);
     }
 

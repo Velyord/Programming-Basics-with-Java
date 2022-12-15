@@ -16,7 +16,9 @@ public class MainTemplate {
     static int biggestInt = Integer.MAX_VALUE;
     static double smallestDouble = -1 * Double.MAX_VALUE;
     static double biggestDouble = Double.MAX_VALUE;
-    
+    static int stringCount = 0;
+    static boolean requiredString = false;
+
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
@@ -43,16 +45,36 @@ public class MainTemplate {
                 out.println("Моля въведете правилно наименование!");
                 return setValue(null, null);
             }
-            /*
-            String[] required = { "" };
-            List<String> requiredList = List.of(required);
-            if (!requiredList.contains(value)){
-                out.print("Моля въведете един от следните избори: | ");
-                for (String thing : required)
-                    out.print(thing + " | ");
-                out.println();
-                return setValue(null, null);
-            } */
+
+            if (requiredString){
+                stringCount++;
+
+                if (stringCount == 1) {
+                    String[] required = { "room for one person", "apartment", "president apartment" };
+                    List<String> requiredList = List.of(required);
+                    if (!requiredList.contains(value)){
+                        out.print("Моля въведете един от следните избори: \n| ");
+                        for (String thing : required)
+                            out.print(thing + " | ");
+                        out.println();
+                        stringCount--;
+                        return setValue(null, null);
+                    }
+                }
+
+                if (stringCount == 2) {
+                    String[] required = { "positive", "negative" };
+                    List<String> requiredList = List.of(required);
+                    if (!requiredList.contains(value)){
+                        out.print("Моля въведете един от следните избори: \n| ");
+                        for (String thing : required)
+                            out.print(thing + " | ");
+                        out.println();
+                        stringCount--;
+                        return setValue(null, null);
+                    }
+                }
+            }
         }
         else {
             try {
@@ -65,7 +87,8 @@ public class MainTemplate {
                     value = null;
                     exit(1);
                 }
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 out.println("Не сте въвели число. Пробвайте пак!");
                 return setValue(min, max);
             }

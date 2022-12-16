@@ -48,31 +48,23 @@ public class MainTemplate {
 
             if (requiredString){
                 stringCount++;
+                String[] required = {};
 
-                if (stringCount == 1) {
-                    String[] required = { "room for one person", "apartment", "president apartment" };
-                    List<String> requiredList = List.of(required);
-                    if (!requiredList.contains(value)){
-                        out.print("Моля въведете един от следните избори: \n| ");
-                        for (String thing : required)
-                            out.print(thing + " | ");
-                        out.println();
-                        stringCount--;
-                        return setValue(null, null);
-                    }
-                }
+                if (stringCount == 1)
+                    required = new String[] {"Spring", "Summer", "Autumn", "Winter"};
+                if (stringCount == 2)
+                    required = new String[] {"Y", "N"};
 
-                if (stringCount == 2) {
-                    String[] required = { "positive", "negative" };
-                    List<String> requiredList = List.of(required);
-                    if (!requiredList.contains(value)){
-                        out.print("Моля въведете един от следните избори: \n| ");
-                        for (String thing : required)
-                            out.print(thing + " | ");
-                        out.println();
-                        stringCount--;
-                        return setValue(null, null);
-                    }
+                List<String> requiredList = List.of(required);
+
+                if (!requiredList.contains(value)){
+                    out.print("Моля въведете един от следните избори: \n| ");
+                    for (String thing : required)
+                        out.print(thing + " | ");
+                    out.println();
+
+                    stringCount--;
+                    return setValue(null, null);
                 }
             }
         }

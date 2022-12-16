@@ -1,29 +1,3 @@
-/*
-Условие:
-
-*/
-package SoftUni.PackageName;
-
-import static java.lang.System.exit;
-import static java.lang.System.out;
-import static java.lang.System.in;
-
-import java.util.Scanner;
-import java.util.List;
-
-public class MainTemplate {
-    static int smallestInt = Integer.MIN_VALUE;
-    static int biggestInt = Integer.MAX_VALUE;
-    static double smallestDouble = -1 * Double.MAX_VALUE;
-    static double biggestDouble = Double.MAX_VALUE;
-    static int stringCount = 0;
-    static boolean requiredString = false;
-
-    static Scanner scanner = new Scanner(in);
-
-    public static void main(String[] args) {
-
-    }
 
     @SuppressWarnings("unchecked")
     private static <T> T setValue(T min, T max) {
@@ -54,6 +28,10 @@ public class MainTemplate {
                     required = new String[] {"Spring", "Summer", "Autumn", "Winter"};
                 if (stringCount == 2)
                     required = new String[] {"Y", "N"};
+                if (stringCount > 2) {
+                    requiredString = false;
+                    return (T) value;
+                }
 
                 List<String> requiredList = List.of(required);
 
@@ -106,6 +84,6 @@ public class MainTemplate {
                 }
             }
         }
+        
         return (T) value;
     }
-}

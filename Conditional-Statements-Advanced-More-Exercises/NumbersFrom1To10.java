@@ -24,10 +24,10 @@ public class NumbersFrom1To10 {
         printNumbersFrom(1, 10);
     }
 
-    private static void printNumbersFrom(int i, int i1) {
-        while (i<=i1) {
-            out.println(i);
-            i++;
+    private static void printNumbersFrom(int num, int maxNum) {
+        while (num <= maxNum) {
+            out.println(num);
+            num++;
         }
     }
 }

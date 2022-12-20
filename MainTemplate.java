@@ -114,3 +114,21 @@ public class MainTemplate {
         return (T) value;
     }
 }
+
+//    add x to array
+//    public static int[] addX(int size, int[] arr, int x) {
+//        int i;
+//
+//        // create a new array of size n+1
+//        int[] newArr = new int[size + 1];
+//
+//        // insert the elements from the old array into the new array
+//        // insert all elements till n
+//        // then insert x at n+1
+//        for (i = 0; i < size; i++)
+//            newArr[i] = arr[i];
+//
+//        newArr[size] = x;
+//
+//        return newArr;
+//    }

@@ -57,17 +57,18 @@ public class ChallengeTheWedding {
     static Scanner scanner = new Scanner(in);
 
     public static void main(String[] args) {
-        int gents = setValue(1, 100);
-        int ladies = setValue(1, 100);
-        int maxTables = setValue(1, 100);
+        int gents = setValue(0, 100);
+        int ladies = setValue(0, 100); // judge tests ladies with 0
+        int maxTables = setValue(0, 100);
         int tablesTaken = 0;
 
-        for (int gent = 1; gent <= gents; gent++)
+        outer: for (int gent = 1; gent <= gents; gent++)
             for (int lady = 1; lady <= ladies; lady++) {
+                if (tablesTaken >= maxTables)
+                    break outer;
+                else
+                    tablesTaken++;
                 out.print("(" + gent + " <-> " + lady + ") ");
-                tablesTaken++;
-                if (tablesTaken == maxTables)
-                    break;
             }
     }
 

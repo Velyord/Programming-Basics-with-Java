@@ -77,31 +77,60 @@ public class Diamond {
         boolean midCrossed = false;
         int dashCount = 0;
         int n = setValue(1, 100);
-        for (int i = 0; i < n; i++) {
-            if (i == 0 || i == n - 1) {
-                dashCount = (n - 1) / 2;
-                printSymbolXTimes("-", dashCount);
-                out.print("*");
-                printSymbolXTimes("-", dashCount);
-            }
-            else {
-                if (midCrossed) {
-                    dashCount += 1;
+        if (n % 2 != 0) {
+            for (int i = 0; i < n; i++) {
+                if (i == 0 || i == n - 1) {
+                    dashCount = (n - 1) / 2;
                     printSymbolXTimes("-", dashCount);
-                } else {
-                    dashCount -= 1;
+                    out.print("*");
                     printSymbolXTimes("-", dashCount);
                 }
-                if (i == n / 2) {
-                    midCrossed = true;
+                else {
+                    if (midCrossed) {
+                        dashCount += 1;
+                        printSymbolXTimes("-", dashCount);
+                    } else {
+                        dashCount -= 1;
+                        printSymbolXTimes("-", dashCount);
+                    }
+                    if (dashCount == 0) {
+                        midCrossed = true;
+                    }
+                    out.print("*");
+                    printSymbolXTimes("-", n - 2 * dashCount - 2);
+                    out.print("*");
+                    printSymbolXTimes("-", dashCount);
                 }
-                out.print("*");
-                printSymbolXTimes("-", n - 2 * dashCount - 2);
-                out.print("*");
-                printSymbolXTimes("-", dashCount);
+                out.println();
             }
-            out.println();
+        } else {
+            for (int i = 0; i < n - 1; i++) {
+                if (i == 0 || i == n - 1 - 1) {
+                    dashCount = (n - 1) / 2;
+                    printSymbolXTimes("-", dashCount);
+                    out.print("**");
+                    printSymbolXTimes("-", dashCount);
+                }
+                else {
+                    if (midCrossed) {
+                        dashCount += 1;
+                        printSymbolXTimes("-", dashCount);
+                    } else {
+                        dashCount -= 1;
+                        printSymbolXTimes("-", dashCount);
+                    }
+                    if (dashCount == 0) {
+                        midCrossed = true;
+                    }
+                    out.print("*");
+                    printSymbolXTimes("-", n - 2 * dashCount - 2);
+                    out.print("*");
+                    printSymbolXTimes("-", dashCount);
+                }
+                out.println();
+            }
         }
+
     }
 
     private static void printSymbolXTimes(String symbol, int times) {
